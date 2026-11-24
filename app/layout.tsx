@@ -19,11 +19,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
-    </html>
+      <html
+          lang="en"
+          className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      >
+          <body className="min-h-full flex flex-col">
+              <header>
+                  ここにヘッダー埋め込む　内容：top works about contact
+              </header>
+
+              {children}
+          </body>
+      </html>
   );
 }
