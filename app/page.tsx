@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { works } from "./lib/works";
+import { mainSkills, otherSkills } from "./lib/skills";
+import SkillList from "./components/SkillList";
 
 export default function Home() {
     return (
@@ -14,7 +16,7 @@ export default function Home() {
                         役立つ Webアプリ を目指します。
                     </p>
                 </section>
-                <section className="flex flex-col gap-4">
+                <section id="works" className="flex flex-col gap-4">
                     <h2 className="text-sm font-semibold uppercase tracking-widest text-zinc-500">
                         works
                     </h2>
@@ -22,7 +24,7 @@ export default function Home() {
                         {works.map((work) => (
                             <li key={work.slug}>
                                 <Link
-                                    className="group flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6"
+                                    className="mb-8 group flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6"
                                     href={`/works/${work.slug}`}
                                 >
                                     <Image
@@ -53,16 +55,35 @@ export default function Home() {
                     <h2 className="text-sm font-semibold uppercase tracking-widest text-zinc-500">
                         Skills
                     </h2>
-                    <p>ここにスキル情報を記載</p>
+                    <div className="flex flex-col gap-4">
+                        <h3 className="text-xs text-zinc-500">
+                            主に使っています
+                        </h3>
+                        <SkillList skills={mainSkills} iconClass="size-12" />
+                    </div>
+
+                    <div className="flex flex-col gap-4">
+                        <h3 className="text-xs text-zinc-500">
+                            触れたことがあります
+                        </h3>
+                        <SkillList skills={otherSkills} />
+                    </div>
                 </section>
 
                 <section id="about" className="flex flex-col gap-4">
                     <h2 className="text-sm font-semibold uppercase tracking-widest text-zinc-500">
                         About
                     </h2>
-                    <p>ここに自己紹介を入れる</p>
-          </section>
-                
+                    <div className="flex max-w-prose flex-col gap-4 leading-relaxed text-zinc-700 dark:text-zinc-300">
+                        <p>
+                            煩雑な医療現場で、配置転換が多い業務の中での困りごとを解決、負担軽減のためにWebアプリケーションを学んでいます。
+                        </p>
+                        <p>
+                            サービスを提供する人が、アプリケーションを活用することで、より良いサービスを提供できるような設計を心がけています。
+                        </p>
+                    </div>{" "}
+                </section>
+
                 <section id="contact" className="flex flex-col gap-4">
                     <h2 className="text-sm font-semibold uppercase tracking-widest text-zinc-500">
                         Contact
